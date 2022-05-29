@@ -1,0 +1,101 @@
+openapi: 3.0.1
+info:
+  title: Tiny URL - Node API
+  description: A simple API to create short links and keep a track of its stats
+  version: 1.0.0
+servers:
+  - url: /api/v1
+tags:
+  - name: TinyURLs
+    description: Simple example endpoints
+  - name: Specification
+    description: The swagger API specification
+paths:
+  /:
+    get:
+      tags:
+        - URLs
+      description: Fetch all shortened urls list
+      responses:
+        200:
+          description: Returns all shortened urls
+          content: { }
+    post:
+      tags:
+        - TinyURLs
+      description: Create a new short link
+      requestBody:
+        description: an example
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExampleBody"
+        required: true
+      responses:
+        201:
+          description: short link created
+
+  /{id}:
+    get:
+      tags:
+        - TinyURLs
+      parameters:
+        - name: id
+          in: path
+          description: The shortcode of the url to retrieve
+          required: true
+          schema:
+            type: string
+        - name: params
+          in: query
+          required: false
+          schema:
+            type: string
+            additionalProperties: true
+      responses:
+        200:
+          description: redirect the user to the original intended url
+          content: {}
+        301:
+          description: redirect the user to the original intended url
+          content: {}
+        404:
+          description: URL not found
+          content: {}
+  /stats/{id}:
+    get:
+      tags:
+        - TinyURLs
+      parameters:
+        - name: id
+          in: path
+          description: The short code/hash of the encoded url to retrieve its stats
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Return the url with its stats
+          content: {}
+        404:
+          description: URL not found
+          content: {}
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
+          content: {}
+components:
+  schemas:
+    ExampleBody:
+      title: example
+      required:
+        - url
+      type: object
+      properties:
+        url:
+          type: string
+          example: http://exmple.com
