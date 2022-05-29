@@ -8,5 +8,8 @@ dist
 !.vscode/launch.json
 !.vscode/extensions.json
 
+#Webstorm
+.idea
+
 # Mocha test results
 test/test-results.xml

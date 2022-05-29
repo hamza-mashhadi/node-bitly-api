@@ -5,6 +5,8 @@ API Hosted on Heroku : [https://miniurlapi.herokuapp.com/api/v1/](https://miniur
 
 Swagger Doc: [https://miniurlapi.herokuapp.com/api-explorer/](https://miniurlapi.herokuapp.com/api-explorer/)
 
+Sample Mongodb URL: [mongodb+srv://cluster0.exqmsmf.mongodb.net/bitly](mongodb+srv://cluster0.exqmsmf.mongodb.net/bitly)
+
 ## Quick Start (Local)
 
 
@@ -13,6 +15,9 @@ I have added my test credentials into the .env.example file , feel free to use t
 ```shell
 # install deps
 npm install
+
+# copy env 
+cp .env.example .env
 
 # run in development mode
 npm run dev
@@ -31,6 +36,14 @@ Install all package dependencies (one time operation)
 ```shell
 npm install
 ```
+
+If you do not have a mongo instance running locally you can create one using docker 
+```
+docker run --name local-mongo -d mongo:latest
+```
+
+Once created, add it's connection details in `.env`
+
 
 ## Run It
 
@@ -81,3 +94,11 @@ Make sure the database is running
   curl http://localhost:3000/api/v1/
   ```
 
+## Technologies Used
+
+- NodeJS (API)
+- ExpressJS (Framework)
+- MongoDB (Database)
+- Swagger (API DOC)
+- OpenApi Validator (MiddleWare)
+- Mocha/Chai (Tests)
